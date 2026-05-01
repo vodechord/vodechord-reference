@@ -1,0 +1,28 @@
+# build output
+/build/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.env
+
+# Node
+node_modules/
+package-lock.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# local audio scratch (committed audio lives in /audio/generated/ only)
+/audio/scratch/
+/audio/*.wav.tmp
