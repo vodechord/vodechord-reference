@@ -31,7 +31,7 @@ jobs:
 
       - name: Install Node lint tools
         run: |
-          npm install --no-save eslint@^9 stylelint@^16 stylelint-config-standard
+          npm install --no-save eslint@^9 stylelint@^17 stylelint-config-standard
 
       - name: Run ruff (Python)
         run: |
