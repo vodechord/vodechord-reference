@@ -68,3 +68,4 @@ This project is public and open to contribution, but is primarily personal at th
 MIT. See [LICENSE](./LICENSE).
 
 Audio examples bundled in this site are covered by the license of their original source where applicable; generated examples are MIT alongside the code that produces them. The audio catalog ([docs/audio-catalog.md](./docs/audio-catalog.md)) documents sourcing and rights per example.
+
