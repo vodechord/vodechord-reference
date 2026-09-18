@@ -4,7 +4,7 @@ A web-based ear-training companion to the [Vodechord](./docs/vodechord-concept.m
 
 The Listening Room collects curated and generated audio examples of the acoustic techniques that make Vodechord's synthesized voice work — jitter, shimmer, spectral tilt, the singer's formant, grit modes, vibrato, microtiming, breath, and more. Each example isolates a single feature so you can hear what "good" sounds like for that dimension, then generalize from that ear training into design decisions for the Vodechord instrument itself.
 
-**Live site:** _to be deployed at a subdirectory of the project's BlueHost server (URL TBD)_
+**Live site:** [vodechord.com/listening-room/](https://vodechord.com/listening-room/)
 **Status:** pre-alpha — docs and scaffolding in place; audio exhibits still to be built.
 
 ---
