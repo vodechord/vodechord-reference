@@ -42,7 +42,7 @@ If a task seems to want a framework or a build pipeline more elaborate than the 
 - Iteratively. Build one exhibit at a time. I want to listen, react, and inform the next iteration. Resist the temptation to batch big work.
 - Confirm understanding before writing code on substantial tasks. A short plan first, then implement.
 - Match the architecture in `docs/architecture.md`. If you'd deviate, flag it and ask.
-- Commit messages should describe the actual change, not "update files."
+- Commit messages should describe the actual change, not "update files." Do not add a `Co-Authored-By: Claude` trailer.
 - Don't add dependencies casually. Anything with a build step or a transitive dependency tree gets a question first.
 
 ## Aesthetic direction
