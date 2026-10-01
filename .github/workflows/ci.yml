@@ -172,6 +172,13 @@ jobs:
             build/ \
             "$BLUEHOST_USER@$BLUEHOST_HOST:$BLUEHOST_PATH/"
 
+          # Deploy a bare black index.html at the site root (vodechord.com/)
+          # so the public homepage isn't a 403 while the real site lives
+          # under /listening-room/. Single-file scp — no --delete, no risk
+          # to other root-level content.
+          scp -i ~/.ssh/deploy_key root-site/index.html \
+            "$BLUEHOST_USER@$BLUEHOST_HOST:$(dirname $BLUEHOST_PATH)/index.html"
+
       - name: Warn if secrets not configured
         if: env.BLUEHOST_HOST == ''
         env:
