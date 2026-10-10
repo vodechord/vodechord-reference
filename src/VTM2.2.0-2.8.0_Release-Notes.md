@@ -1,5 +1,41 @@
 # Mr Voice VTM — Release notes since 2.2.0
 
+## 2.8.0 — 2026-10-10 · Voice size & rack alignment
+- **VOICE SIZE** (Singing Style panel): vocal-tract length from 11 to 20 cm, with presets CHILD 12.5 · F 14.5 · M 16.0 (default) · L 17.5. Double-click resets. The value is remembered.
+  - The engine sets tract length by section count, so the voice no longer depends on the device sample rate. At 48k the step is 0.36 cm; the readout shows the actual length.
+  - Moving it mid-note resamples the tube geometry and waves, so it glides rather than restarts.
+  - Telemetry and bench logs stay in 44-point profile space, so the diagram and bench are unaffected.
+- **Rack alignment**: the rack columns now match the main area, so Singing Style / Phoneme Bank sits under Fig A and Source sits under Figs B–D. Source knobs are two rows of three.
+
+## 2.7.0 — 2026-10-10 · Default phrases & canonical rate
+**Default phrases.** Eight phrases load onto the pads, and together they demo every markup:
+| Pad | Phrase | Shows |
+|---|---|---|
+| 1 | Hello world. | plain speech, `.` falling end |
+| 2 | Are you there? | `?` rising end |
+| 3 | Wait, let me think… okay! | `,` short rest · `…` long rest · `!` raised |
+| 4 | I *really* mean it. | `*stress*` |
+| 5 | Go ^up, then _down. | `^` / `_` pitch steps |
+| 6 | Sing it~ with me~. | `~` vibrato |
+| 7 | Stop. That is LOUD! | `CAPS` tense voice |
+| 8 | Say /h ɛ l oʊ/ — then breathe; done. | `/ipa/` inline · `—` `;` medium rests |
+
+- The pads default to **4×2**. The list also keeps three classics (quick brown fox, sea shells, I can speak).
+- **↺** in the library row restores the defaults; your saved phrases stay in the list.
+- Saved data moved to a new storage key, so everyone starts with the clean set. Phrases you saved before are kept in the list.
+
+**Sample rate.** Back to a **canonical 48 kHz** by default. Tract length scales with the sample rate (48k ≈ 16 cm, 44.1k ≈ 17.5 cm, about 8% lower formants), and all tuning is done at 48k. The panel still offers 44.1k and DEVICE for A/B. The 2.6.x lag turned out to be Bluetooth output buffering, not the app.
+
+## 2.6.2 — 2026-10-10 · Latency fix candidate
+- (Reverted in 2.7.0) The AudioContext ran at the **device sample rate** instead of a forced 48 kHz. Forcing a rate the hardware isn't running at makes the browser add a resampling buffer (about 330 ms of output latency measured).
+- The latency panel has an AUDIO RATE switch (DEVICE / 48k / 44.1k, reloads the page) for A/B testing.
+- At 44.1 kHz the model tube is about 8% longer, so formants sit about 8% lower (closer to an adult male).
+- MIDI notes now appear in the latency panel; every note-on is logged.
+
+## 2.6.1 — 2026-10-09 · Latency probe
+- On-screen LATENCY panel (Shift+L toggles) splits press → sound into input / sched / build / device, plus main-thread long tasks and frame gaps. Every result is also logged to the console as `[LAT]`.
+- AudioContext explicitly requests `latencyHint: 'interactive'`.
+
 ## 2.6.0 — 2026-10-09 · Prosody & automation lanes
 **Phrase editor**
 - New automation lane under the phoneme strip (60 px). Switch it in the strip header: **F0 · BREATH · SHAPE · —**.

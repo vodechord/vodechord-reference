@@ -66,22 +66,30 @@
       text-transform: uppercase;
       color: #888;
     }
-    a.notes {
+    .notes {
       position: absolute;
       top: 0;
       right: 36px;
+      padding: 14px 0;
       font-size: 12px;
       line-height: 20px;
       letter-spacing: 0.02em;
-      color: #888;
+      color: #444;
+    }
+    .notes a {
+      display: inline;
+      padding: 0;
       border: 0;
+      font-size: 12px;
+      color: #888;
       text-decoration: underline;
       text-decoration-color: #333;
       text-underline-offset: 2px;
     }
-    a.notes:hover { color: #fff; text-decoration-color: #fff; }
-    @media (max-width: 400px) {
+    .notes a:hover { color: #fff; text-decoration-color: #fff; }
+    @media (max-width: 480px) {
       .tag { display: none; }
+      .notes { position: static; display: block; padding: 0 0 12px; margin-top: -6px; }
     }
     footer {
       margin-top: 48px;
@@ -109,8 +117,8 @@
     <p>Interactive sketches and prototypes exploring the acoustics of the singing voice — reference material informing the design of Vodechord.</p>
     <ul>
       <li class="has-notes">
-        <a href="my-name-is-voice.html">My Name Is Voice <span class="tag">Updated &middot; v2.6</span> <span class="arrow">&rarr;</span></a>
-        <a class="notes" href="VTM2.2.0-2.6.0_Release-Notes.md">Release notes</a>
+        <a href="my-name-is-voice.html">My Name Is Voice <span class="tag">Updated &middot; v2.8</span> <span class="arrow">&rarr;</span></a>
+        <span class="notes"><a href="VTM2.2.0-2.8.0_Release-Notes.md">Release notes</a> &middot; <a href="MIDI%20Guide.md">MIDI guide</a></span>
       </li>
       <li><a href="waveguide-lab.html">Waveguide Lab <span class="arrow">&rarr;</span></a></li>
     </ul>
