@@ -58,6 +58,31 @@
       color: #fff;
       transform: translateX(2px);
     }
+    li.has-notes { position: relative; }
+    .tag {
+      margin-left: 10px;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #888;
+    }
+    a.notes {
+      position: absolute;
+      top: 0;
+      right: 36px;
+      font-size: 12px;
+      line-height: 20px;
+      letter-spacing: 0.02em;
+      color: #888;
+      border: 0;
+      text-decoration: underline;
+      text-decoration-color: #333;
+      text-underline-offset: 2px;
+    }
+    a.notes:hover { color: #fff; text-decoration-color: #fff; }
+    @media (max-width: 400px) {
+      .tag { display: none; }
+    }
     footer {
       margin-top: 48px;
       font-size: 12px;
@@ -83,7 +108,10 @@
     <h1>Vodechord &middot; Reference</h1>
     <p>Interactive sketches and prototypes exploring the acoustics of the singing voice — reference material informing the design of Vodechord.</p>
     <ul>
-      <li><a href="my-name-is-voice.html">My Name Is Voice <span class="arrow">&rarr;</span></a></li>
+      <li class="has-notes">
+        <a href="my-name-is-voice.html">My Name Is Voice <span class="tag">Updated &middot; v2.6</span> <span class="arrow">&rarr;</span></a>
+        <a class="notes" href="VTM2.2.0-2.6.0_Release-Notes.md">Release notes</a>
+      </li>
       <li><a href="waveguide-lab.html">Waveguide Lab <span class="arrow">&rarr;</span></a></li>
     </ul>
     <footer>
