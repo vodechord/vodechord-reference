@@ -2,7 +2,7 @@
 
 ## What this project is
 
-This repo is the **Listening Room**, a web-based ear-training site that informs design decisions for **Vodechord** — a separate, future Max for Live device that is a singing synthesizer (a playable vocal instrument that sings what you type).
+This repo is the **Listening Room**, a web-based ear-training site that informs design decisions for **Vodechord** — a separate, future Max for Live device that is a singing synthesizer (a performable vocal synthesizer, sequencer and visualizer that sings with your thoughts and performs with your personal touch).
 
 **Critical distinction:** the Listening Room is NOT a demo, marketing site, or product preview for Vodechord. Vodechord the instrument does not yet exist. This site exists to ground Vodechord's eventual design in actual ear-training, by isolating the acoustic features that make synthetic voice work and letting the listener hear "good" versions of each in context.
 
@@ -21,16 +21,6 @@ When in doubt, defer to these. If there's a conflict between something I say in 
 
 Note: the Vodechord concept doc describes confidence-state typography conventions (bold/faded/edited) for the future *instrument's* UI. Those rules are for Vodechord-the-Max-for-Live-device, not for this site. The Listening Room has its own visual identity, defined below.
 
-## Stack constraints (firm)
-
-- Vanilla HTML, CSS, JS. No frameworks. No Tailwind. No build step beyond optional concatenation/minification.
-- Web Audio API for real-time interactive exhibits.
-- Python (numpy, scipy, librosa, soundfile, pyworld) in `/scripts/` for pre-rendered audio generation. Deterministic with fixed seeds.
-- BlueHost shared hosting. Deploys via GitHub Actions + rsync over SSH on push to main.
-- Production URL: https://vodechord.com/listening-room/
-
-If a task seems to want a framework or a build pipeline more elaborate than the above, push back rather than introducing one.
-
 ## Audio sourcing rules
 
 - **Generated** examples: MIT-licensed, produced by scripts in `/scripts/`, output to `/audio/generated/`, committed.
@@ -45,76 +35,75 @@ If a task seems to want a framework or a build pipeline more elaborate than the 
 - Commit messages should describe the actual change, not "update files." Do not add a `Co-Authored-By: Claude` trailer.
 - Don't add dependencies casually. Anything with a build step or a transitive dependency tree gets a question first.
 
+## Credits
+
+Vodechord and the Listening Room are created by Jerome Miller with Claude Design. The prototype pages in `src/` (`my-name-is-voice.html`, `waveguide-lab.html`) are single-file bundles exported from Claude Design — replace them with a fresh export rather than hand-editing the bundled markup.
+
 ## Aesthetic direction
 
-The Listening Room visual identity is: **midcentury linguistics-textbook clarity meets editorial publication warmth.** Imagine the cross-section diagrams, IPA charts, and acoustic spectrograms you'd find in a Bell Labs research monograph from the 1950s — confident hand-drafted line work, anatomical precision, restrained palette — reproduced in a thoughtful contemporary publication.
+**Bell Labs meets Teenage Engineering OP-XY, creating a valley of the uncanny voice synth.**
 
-Key principles:
+Two parents. From Bell Labs: the vocal-tract cross-section, the area function, the spectrogram, the numbered figure — the voice treated as a physical system and drawn with anatomical and acoustic accuracy. From the OP-XY: a black instrument with white legends, a hard grid, monochrome display, tiny uppercase labels, nothing decorative. The result should feel like lab equipment that happens to sing. The voice is not trying to pass as a real human. It should land eerily close to real and remain definitely not — that gap is the instrument's character, not a defect to engineer away.
 
-- **Illustrations are technical diagrams, not soft editorial illustrations.** Clean line work, confident strokes, anatomical and acoustic accuracy over decorative flourish. The look of a precise hand-drafted figure, slightly digital but never cartoonish.
-- **Restraint over abundance.** Most surfaces are quiet. A typical page has a single illustration, a tightly set headline, paragraphs of editorial prose, an interactive control, and almost nothing else. Negative space is doing as much work as the marks.
-- **Type carries the warmth.** Where the diagrams are precise and reserved, the typography is alive — Fraunces with its optical-size and softness axes, set with care.
-- **Active areas are exaggerated; everything else recedes.** When an exhibit focuses on a specific anatomical or acoustic region, that region is rendered with more detail, line weight, and contrast. Surrounding context is present but stylized down to ghostly outlines.
-
-### Typography
-
-- **Fraunces** (variable serif, opsz and SOFT axes) — lyrics, headings, editorial body copy. The hero typeface.
-- **Instrument Sans** — UI labels, chrome, navigation, button text.
-- **JetBrains Mono** — numeric readouts, frequency values in Hz, code, tabular data.
-- **Off-limits:** Space Grotesk, Inter, generic system stacks, anything that reads as "default AI tech site."
+These rules describe what the shipped pages actually do. `src/my-name-is-voice.html` is the reference implementation; when a rule here and that page disagree, ask.
 
 ### Palette
 
+Black, white, and a gray ramp. No brand color.
+
 ```
---ink:        #16110f   /* primary background — warm near-black */
---ink-2:      #1f1a17   /* elevated surfaces, panel backgrounds */
---ink-3:      #2a2320   /* insets, wells, nested surfaces */
---paper:      #e8dfc8   /* cream paper for editorial content blocks */
---paper-dim:  #c9bfa6   /* dim paper for secondary content */
---cream:      #f5efe3   /* primary foreground text on dark surfaces */
---muted:      #8a7f72   /* muted UI text */
---muted-2:    #6a6158   /* deeply muted, near-rule-color text */
---rule:       #3a302b   /* hairline dividers and frame strokes */
---ink-line:   #2a221d   /* subtle internal line work on diagrams */
---diagram:    #b8a896   /* diagram line color on dark backgrounds */
---amber:      #ff9a3c   /* primary accent — tube glow, active states */
---amber-dim:  #c97a2f   /* hover/pressed amber */
---amber-glow: #ff9a3c66 /* subtle bloom effect for active elements */
---teal:       #5fb3a5   /* secondary state — phosphor, automation, running processes */
---rose:       #e06c5a   /* edits, overrides, user-modified content */
+--bg:   #000      /* page and panel background */
+--g1:   #0a0a0a   /* raised surface */
+--g2:   #141414   /* section header bars, hover */
+--g3:   #2a2a2a   /* rules, cell dividers (also --rule) */
+--g4:   #4a4a4a   /* inactive tracks, idle indicators */
+--g5:   #8a8a8a   /* secondary labels, hints */
+--g6:   #c8c8c8   /* primary labels */
+--fg:   #fff      /* values, active state, legends */
 ```
+
+Waveguide Lab uses the same ramp a hair warmer (`#0a0a0a` ground, `#f2f2f0` foreground); either is fine, don't mix them on one page.
 
 ### Use of color
 
-- Ink (background) and cream/paper (foreground) do most of the work. The site is fundamentally a "warm-dark" theme with cream editorial blocks for prose-heavy sections.
-- Diagram line work uses `--diagram` (a desaturated warm gray) as default and `--cream` for emphasis. Never use bright white.
-- Amber is *scarce*. It marks active states, the currently-playing note, the resonance band that's energized, the value the user just adjusted. If amber is on more than two things on screen, it's wrong.
-- Teal signals automation or asynchronous processes — buffering, "running," background jobs.
-- Rose marks user overrides — a value the user has manually set, an edited label, a custom curve.
-- Decorative color is suspicious. Ask before adding more colors than the palette above.
+- **State is shown with white, not hue.** Active = white text, white 1px inset outline, or a full invert (white fill, black text). Inactive = gray.
+- Color appears only as a functional signal, and only where Mr Voice already uses it: amber `oklch(0.82 0.16 80)` for tuning/dev controls and warnings, red `oklch(0.7 0.18 25)` for errors, red-orange `#d8543b` / `#ff6a4d` for the one armed/precision toggle. Ask before adding another.
+- No decorative color, no tinted backgrounds, no colored series in visualizations — distinguish traces by weight, dash, and gray level.
 
-### Diagram conventions
+### Typography
 
-- **Line weight hierarchy:** primary subject in confident strokes (1.5–2.5px equivalent). Secondary detail in thinner strokes (0.75–1px). Ghosted context in dotted or very thin solid lines.
-- **Active resonance / focus regions** glow gently in amber — a soft fill at low opacity, perhaps a slightly thicker outline. Never a hard glow or RGB-style bloom.
-- **Annotations** use Instrument Sans for labels (small caps or all-caps, generous letter-spacing), with thin leader lines in `--rule`.
-- **Frequency / value readouts** in JetBrains Mono.
-- **Background of diagram surfaces** is `--ink-2` with a barely-visible grid or rule structure if grid is needed at all.
+- **JetBrains Mono** — the voice of the instrument. Readouts, values, phonemes, body UI text (13px base, slight positive tracking). If in doubt, it's mono.
+- **Archivo** — panel titles and parameter labels, as in Waveguide Lab: uppercase, weight 500–700, 9–13px, letter-spacing 0.14–0.2em.
+- Labels are small, uppercase and widely tracked (0.12–0.24em). Values are larger and brighter than their labels.
+- The index page is a plain neutral system-sans list; keep it that quiet.
+- No serif display type, no editorial headline styling.
+
+### Layout and controls
+
+- **Hard grid.** Panels are cells divided by 1px `--rule` lines (grid with 1px gaps over a rule-colored background). Full-bleed bands, no cards, no floating panels, no outer margins beyond a thin frame.
+- **Square corners.** Radius 0 everywhere; 1–2px only on slider thumbs and LED chips; 50% only for indicator dots.
+- **Sliders** are a 1–2px track with a small rectangular white thumb or a solid white fill bar. **Buttons** are a 1px outline with uppercase tracked mono text; hover fills gray, active inverts.
+- **Dense.** Tight padding (6–12px), many parameters visible at once, every one labelled and showing its numeric value.
+- Glyphs and symbols over icons: `◌ ♪ ↺ ↕ ‖ ·` and IPA, set in the type itself.
+
+### Diagrams and visualizers
+
+- White and gray line work on black. The tract, waveform, spectrogram and automation lanes are the only "illustration" the site has, and they are drawn from the live model state, not decoratively.
+- Line weight carries hierarchy: the thing that is sounding is white and heavier; reference and what-will-play lines are gray and thin.
+- Label axes with real units (Hz, ms, semitones, note names) in mono. No decorative captions, scale marks or figure labels that don't carry information.
 
 ### What to avoid
 
-- Drop shadows. Box shadows. Glow effects beyond the gentle amber bloom on active states.
-- Gradients except very subtle ones (e.g., `--ink` to `--ink-2` for depth).
-- Glassmorphism, neumorphism, beveled controls.
-- Faux-analog VU glass, faux-knurled metal knobs, faux-wood paneling.
-- Generic anatomy stock illustration. Cartoon-y line art with disproportions.
-- RGB / cyan / magenta / purple. Tech-startup brand chrome.
-- Emoji as visual elements.
-- Rounded corners on frames or diagram panels — keep edges crisp. Sliders and small interactive controls can have small (2px) radius for tactility.
+- Drop shadows and soft glows. The single exception is the small white bloom on a live MIDI/RX indicator.
+- Gradients, beyond a near-invisible `#050505` → `#000` on a band.
+- Rounded cards, glassmorphism, neumorphism, skeuomorphic knobs, VU glass, wood or metal textures.
+- Warm paper/cream surfaces, serif editorial layouts, illustrated anatomy.
+- Color used for brand or mood. Emoji.
+- Chasing human realism, or presenting the voice as a person: no mascots, faces, or copy that implies a real singer. Eerily close to real, definitely not — keep everyone aware of that.
 
 ### The look-and-feel test
 
-When generating new visuals, the test is: does this look like a careful figure in an academic acoustics monograph or a thoughtful music-tech editorial publication? Or does it look like generic AI startup output? Aim for the former, always.
+Does it look like a panel on a piece of black lab hardware that Bell Labs and Teenage Engineering built together — every mark a control, a measurement, or a legend? Or does it look like a website about a synth? Aim for the former.
 
 ## Build waves (current plan)
 

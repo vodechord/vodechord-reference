@@ -63,6 +63,12 @@ This project is public and open to contribution, but is primarily personal at th
 
 ---
 
+## Credits
+
+Created by Jerome Miller with Claude Design.
+
+---
+
 ## License
 
 MIT. See [LICENSE](./LICENSE).
