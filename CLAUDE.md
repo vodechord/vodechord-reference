@@ -37,7 +37,7 @@ Note: the Vodechord concept doc describes confidence-state typography convention
 
 ## Credits
 
-Vodechord and the Listening Room are created by Jerome Miller with Claude Design. The prototype pages in `src/` (`my-name-is-voice.html`, `waveguide-lab.html`) are single-file bundles exported from Claude Design — replace them with a fresh export rather than hand-editing the bundled markup.
+Vodechord and the Listening Room are created by Jerome Miller with Claude Design. The prototype pages in `src/` (the Mr Voice releases under `src/mr-voice/<version>/`, and `waveguide-lab.html`) are single-file bundles exported from Claude Design. Ship a fresh export rather than hand-editing the bundled markup. Mr Voice arrives as a zip dropped into `src/`, which gets unpacked into a new, frozen version folder; see "Adding a release" in `docs/architecture.md`. `src/my-name-is-voice.html` is a hand-written redirect to the latest release.
 
 ## Aesthetic direction
 
@@ -45,7 +45,7 @@ Vodechord and the Listening Room are created by Jerome Miller with Claude Design
 
 Two parents. From Bell Labs: the vocal-tract cross-section, the area function, the spectrogram, the numbered figure — the voice treated as a physical system and drawn with anatomical and acoustic accuracy. From the OP-XY: a black instrument with white legends, a hard grid, monochrome display, tiny uppercase labels, nothing decorative. The result should feel like lab equipment that happens to sing. The voice is not trying to pass as a real human. It should land eerily close to real and remain definitely not — that gap is the instrument's character, not a defect to engineer away.
 
-These rules describe what the shipped pages actually do. `src/my-name-is-voice.html` is the reference implementation; when a rule here and that page disagree, ask.
+These rules describe what the shipped pages actually do. The latest Mr Voice release in `src/mr-voice/` is the reference implementation; when a rule here and that page disagree, ask.
 
 ### Palette
 

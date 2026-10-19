@@ -26,3 +26,6 @@ Thumbs.db
 # local audio scratch (committed audio lives in /audio/generated/ only)
 /audio/scratch/
 /audio/*.wav.tmp
+
+# release zips are inputs; unpacked contents are committed under src/<prototype>/<version>/
+src/*.zip

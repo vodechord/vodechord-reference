@@ -14,22 +14,22 @@ An export is a bundle: a small loader plus a manifest of compressed, inlined res
 
 | Page | What's inside the bundle |
 |---|---|
-| `my-name-is-voice.html` (Mr Voice VTM) | JSX app transpiled in the browser by Babel, the vocal-tract engine as an AudioWorklet, pronunciation data (CMUdict subset, letter-to-sound rules), JetBrains Mono and Inter. About 1.9 MB. |
+| `mr-voice/<version>/Mr Voice VTM<version> (standalone).html` (Mr Voice VTM) | JSX app transpiled in the browser by Babel, the vocal-tract engine as an AudioWorklet, pronunciation data (CMUdict subset, letter-to-sound rules), JetBrains Mono and Inter. About 1.9 MB. |
 | `waveguide-lab.html` (Waveguide Lab) | Declarative template with React 18, a Kelly–Lochbaum waveguide as an AudioWorklet, JetBrains Mono and Archivo. About 350 KB. |
 
 Rules that follow from this:
 
 - **Don't hand-edit a bundle.** The markup and code are compressed and keyed by generated IDs. To change a page, change it in Claude Design and replace the file with a fresh export.
-- **A page update is one file replaced**, plus its release notes (see below).
+- **Mr Voice ships as versioned releases.** Each release is a folder, `src/mr-voice/<version>/`, holding the exported page and its own copy of the docs that came with it. Releases stay live side by side (see "Adding a release" below).
 - Visual rules for the pages live in `CLAUDE.md` under "Aesthetic direction".
 
 ### Index: hand-written HTML
 
-`src/index.html` is a plain hand-written page with inline CSS and no JavaScript. It lists the prototypes and links each one's supporting notes. This is the only page edited directly in the repo.
+`src/index.html` is a plain hand-written page with inline CSS and no JavaScript. It links the latest release of each prototype, that release's docs, and earlier releases. `src/my-name-is-voice.html` is a hand-written redirect to the latest Mr Voice release, which keeps the original URL working. These two are the only pages edited directly in the repo.
 
-### Notes: Markdown served as-is
+### Release docs: served as exported
 
-Release notes and guides for a prototype are Markdown files in `src/`, linked from the index next to the page they describe (currently `VTM2.2.0-2.8.0_Release-Notes.md` and `MIDI Guide.md`). They are deployed unrendered. When a new release-notes file supersedes an old one, the old file is removed and the index link updated.
+Each release folder holds the docs that came in its zip: release notes and the MIDI guide as Markdown (deployed unrendered), plus HTML guides such as `Phrase Guide.html` and `Workflows.html`. Filenames are kept exactly as exported, because the guides link to each other by filename. A release folder is frozen once committed, and a fix becomes a new version.
 
 ### Audio: synthesized in the browser
 
@@ -63,10 +63,13 @@ vodechord-reference/
 │   └── design-briefs/
 ├── src/                           ← everything here is deployed
 │   ├── index.html                 ← hand-written landing page
-│   ├── my-name-is-voice.html      ← Claude Design export
+│   ├── my-name-is-voice.html      ← hand-written redirect to the latest Mr Voice release
 │   ├── waveguide-lab.html         ← Claude Design export
-│   ├── VTM2.2.0-2.8.0_Release-Notes.md
-│   └── MIDI Guide.md
+│   ├── *.zip                      ← incoming release zips (gitignored, never deployed)
+│   └── mr-voice/
+│       ├── 2.8.0/                 ← my-name-is-voice.html, MIDI Guide.md, Release Notes 2.2.0-2.8.0.md
+│       └── 2.14.0/                ← Mr Voice VTM2.14.0 (standalone).html, Phrase Guide.html,
+│                                    Workflows.html, MIDI Guide.md, Release Notes *.md
 ├── root-site/
 │   └── index.html                 ← bare black page for vodechord.com root (not deployed by CI)
 ├── audio/                         ← placeholder, unused
@@ -91,7 +94,7 @@ Locally, any static file server pointed at `src/` shows the site as deployed. Op
 3. The deploy job takes a `tar.gz` snapshot of the current remote directory, then runs `rsync -avz --delete` over SSH from `build/` to the server.
 4. The site is served at https://vodechord.com/listening-room/.
 
-Because of `--delete`, a file removed from `src/` is removed from the live site on the next deploy.
+Because of `--delete`, a file removed from `src/` is removed from the live site on the next deploy. Old releases stay live because they stay in `src/`. The server mirrors the folders, so a release is served at e.g. `/listening-room/mr-voice/2.14.0/`, with its docs alongside.
 
 ### Secrets
 
@@ -139,14 +142,17 @@ A broken link in any Markdown file blocks the deploy.
 
 ---
 
-## Updating a prototype
+## Adding a release
 
-1. Export the new version from Claude Design and replace the file in `src/`.
-2. Add or replace its release notes (and any guide) in `src/`.
-3. Update the version tag and note links on that page's row in `src/index.html`.
-4. Commit with the release notes summarized in the message, and push to `main`.
-5. Check the Actions run, then the live page.
+1. Export the release from Claude Design as a zip (the standalone page plus its docs) and drop it into `src/`. `src/*.zip` is gitignored, so the zip itself is never committed or deployed.
+2. Unpack it into `src/mr-voice/<version>/` without the zip's top-level folder. Leave the filenames unchanged.
+3. Point `src/my-name-is-voice.html` (both the meta refresh and the fallback link) at the new release's page.
+4. In `src/index.html`, point the Mr Voice row, its version tag and its doc links at the new folder, and add the previous release to the "Previous" links.
+5. Commit with the release highlights in the message, and push to `main`.
+6. Check the Actions run, then the live page. Delete the zip locally, or keep it.
+
+Never edit or remove a committed release folder. Ship a new version instead.
 
 ---
 
-*Architecture doc version: October 10, 2026 — Rewritten for the Claude Design single-file export stack.*
+*Architecture doc version: October 18, 2026 — Versioned release folders for Mr Voice.*

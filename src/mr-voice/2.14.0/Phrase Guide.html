@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mr Voice VTM · Phrase Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#000;--fg:#fff;--g4:#3a3a3a;--g5:#8a8a8a;--g6:#c8c8c8;--rule:#2a2a2a;--mono:'JetBrains Mono',ui-monospace,Menlo,monospace}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--mono);font-size:14px;line-height:1.6}
+a{color:var(--fg);text-underline-offset:3px}a:hover{color:var(--g6)}
+.wrap{max-width:960px;margin:0 auto;padding:48px 24px 96px}
+header{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:1px solid var(--fg);padding-bottom:14px}
+.brand{font-weight:700;font-size:18px;letter-spacing:.14em}.ver{font-size:10px;letter-spacing:.2em;color:var(--g5)}
+h1{font-size:32px;line-height:1.15;margin:40px 0 10px;text-wrap:balance}
+.lede{color:var(--g6);max-width:64ch;margin:0;text-wrap:pretty}
+nav{display:flex;flex-wrap:wrap;gap:6px;margin:28px 0 0}
+nav a{border:1px solid var(--g4);padding:4px 10px;font-size:10px;letter-spacing:.16em;font-weight:600;text-decoration:none}
+nav a:hover{border-color:var(--fg);color:var(--fg)}
+section{margin-top:56px;padding-top:18px;border-top:1px solid var(--rule)}
+.sh{display:flex;gap:14px;align-items:baseline}.sn{font-size:10px;letter-spacing:.2em;color:var(--g5);font-weight:600}
+h2{font-size:21px;margin:0;line-height:1.25}
+p.note{color:var(--g6);margin:10px 0 20px;max-width:68ch;text-wrap:pretty}
+.tbl{width:100%;border-collapse:collapse;font-size:13px}
+.tbl th{text-align:left;font-size:10px;letter-spacing:.18em;color:var(--g5);font-weight:600;padding:8px 10px;border-bottom:1px solid var(--g4)}
+.tbl td{padding:9px 10px;border-bottom:1px solid var(--rule);vertical-align:top;text-wrap:pretty}
+.tbl td:first-child{white-space:nowrap;font-weight:700}
+.tbl td.ex{color:var(--g6);white-space:nowrap}
+.scroll{overflow-x:auto}
+code{background:#151515;padding:0 4px}
+kbd,.ui{font-family:var(--mono);font-size:11px;letter-spacing:.1em;border:1px solid var(--g4);padding:0 5px;white-space:nowrap;font-weight:600}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:24px}
+.card{border:1px solid var(--g4);padding:16px 18px}
+.card h3{font-size:10px;letter-spacing:.22em;color:var(--g5);margin:0 0 10px;font-weight:600}
+.card ul{margin:0;padding-left:16px;display:flex;flex-direction:column;gap:6px;font-size:13px;text-wrap:pretty}
+.recipes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:1px;background:var(--rule);border:1px solid var(--rule)}
+.recipes div{background:#000;padding:14px 16px}
+.recipes code{display:block;background:none;padding:0;font-weight:700;margin-bottom:6px;word-break:break-word}
+.recipes span{color:var(--g6);font-size:12.5px}
+footer{margin-top:72px;padding-top:14px;border-top:1px solid var(--rule);font-size:11px;color:var(--g5);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+</style></head>
+<body><div class="wrap">
+<header><span class="brand">MR VOICE · VTM</span><span class="ver">PHRASE GUIDE · 2.14</span></header>
+<h1>Expressive control from the phrase editor</h1>
+<p class="lede">Type it, mark it, then shape it on the loop. The markup sets intent; the lanes refine it; pads keep the result exactly as you left it.</p>
+<nav><a href="#markup">MARKUP</a><a href="#modes">SPEAK vs SING</a><a href="#spaces">WORD SPACES</a><a href="#key">KEY</a><a href="#editor">EDITOR</a><a href="#recipes">RECIPES</a></nav>
+
+<section id="markup" data-screen-label="01 Markup">
+<div class="sh"><span class="sn">01</span><h2>Markup</h2></div>
+<p class="note">Marks attach to a word. Semitones are relative to the F0 knob, or to the MIDI note you hold. Marks stack.</p>
+<div class="scroll"><table class="tbl">
+<tr><th>MARK</th><th>EFFECT</th><th>EXAMPLE</th></tr>
+<tr><td><code>,</code></td><td>Short rest, 200 ms. Speech: word end rises 1.5 st (continuation).</td><td class="ex">Well, I</td></tr>
+<tr><td><code>;</code> <code>—</code> <code> - </code></td><td>Medium rest, 300 ms.</td><td class="ex">think; maybe — not</td></tr>
+<tr><td><code>.</code></td><td>Long rest, 450 ms. Speech: word end falls 2 st.</td><td class="ex">not.</td></tr>
+<tr><td><code>?</code></td><td>Long rest, 450 ms. Speech: word end rises 4 st.</td><td class="ex">there?</td></tr>
+<tr><td><code>!</code></td><td>Long rest, 450 ms. Speech: whole word +2 st.</td><td class="ex">begin!</td></tr>
+<tr><td><code>…</code> <code>...</code></td><td>Longest rest, 700 ms. At the start of a phrase: silent count‑in with the mouth already placed.</td><td class="ex">… and now</td></tr>
+<tr><td><code>*word*</code></td><td>Stress: vowel +3 st (consonants +2), 1.25× longer, 12% more breath.</td><td class="ex">*now*</td></tr>
+<tr><td><code>^word</code> <code>_word</code></td><td>Step up / down 2 st each. Stack: <code>^^</code> = +4.</td><td class="ex">^^up _down</td></tr>
+<tr><td><code>word~</code></td><td>Vibrato on the vowel, held 1.6× longer.</td><td class="ex">on~</td></tr>
+<tr><td><code>CAPS</code></td><td>Tense, pressed voice: +1.5 st, 15% more breath. Two letters or more.</td><td class="ex">NO</td></tr>
+<tr><td><code>/ipa/</code></td><td>Exact phonemes, space‑separated. Bare marks after it apply to it: <code>/m ɑ/~</code>.</td><td class="ex">/h ɛ l oʊ/</td></tr>
+<tr><td><code>+</code> <code>‿</code></td><td>Tie: no break between words, breath and voice carry through.</td><td class="ex">Are+you</td></tr>
+<tr><td><code>|</code></td><td>Break: 90 ms devoiced gap between words.</td><td class="ex">Go | up</td></tr>
+</table></div>
+</section>
+
+<section id="modes" data-screen-label="02 Speak vs sing">
+<div class="sh"><span class="sn">02</span><h2>Speak vs sing</h2></div>
+<p class="note">Toggle with <span class="ui">◌</span> next to SAY IT. Both modes use the same markup; the base contour underneath differs. It's fixed for now; shape it with markup and F0 edits.</p>
+<div class="two">
+<div class="card"><h3>SPEAK</h3><ul>
+<li><b>Arc:</b> pitch falls in a straight line from +1 to −2.5 st across each breath group, then restarts after every rest.</li>
+<li><b>Ends:</b> <code>? . ! ,</code> shape the word they follow (table above).</li>
+<li><b>Length:</b> natural; only the last vowel before a rest or end gets 1.15×.</li>
+<li><b>Glides:</b> pitch follows the articulation speed.</li>
+<li><b>Key:</b> ignored unless you switch <span class="ui">♪+◌</span> on.</li>
+</ul></div>
+<div class="card"><h3>SING</h3><ul>
+<li><b>Melody:</b> an 8‑slot pattern, 0 +2 +4 +5 +4 +2 0 −3 st, one slot per vowel, repeating. Consonants take the next vowel's note.</li>
+<li><b>Ends:</b> <code>? . ! ,</code> are rests only, no pitch change.</li>
+<li><b>Length:</b> every non‑stop sound 1.7× longer.</li>
+<li><b>Glides:</b> portamento up to 90 ms between notes.</li>
+<li><b>Key:</b> applied when KEY is on.</li>
+</ul></div>
+</div>
+<p class="note">Order of layers, bottom to top: base contour (arc or melody) → markup → your F0 edits → KEY snap → a held MIDI note (overrides all, glides back on release).</p>
+</section>
+
+<section id="spaces" data-screen-label="03 Word spaces">
+<div class="sh"><span class="sn">03</span><h2>Word spaces and rests</h2></div>
+<p class="note">A space is a join, not a pause. Use punctuation when you want silence.</p>
+<div class="scroll"><table class="tbl">
+<tr><th>JOIN</th><th>WHEN</th><th>SOUND</th></tr>
+<tr><td>Link</td><td>Most spaces, and any space next to a consonant (p, t, s…)</td><td>No gap. Breath and voice continue; the consonant does the separating.</td></tr>
+<tr><td>Dip</td><td>Vowel → vowel, e.g. "go up"</td><td>40 ms breath dip (25 ms sung), voice stays on.</td></tr>
+<tr><td>Tie <code>+</code></td><td>You want a slur</td><td>Always linked.</td></tr>
+<tr><td>Break <code>|</code></td><td>You want words apart</td><td>90 ms unvoiced gap.</td></tr>
+<tr><td>Rest <code>, ; . …</code></td><td>Phrasing, cadence, musical space</td><td>Silent. The voice releases, then shapes the next sound in silence; the next onset is softer. Drag the rest cell to set its length.</td></tr>
+</table></div>
+<p class="note">Timeline symbols: <code>|</code> short or medium rest · <code>‖</code> long rest · <code>·</code> word dip or break. A final voiced stop (/b d g/) gets a short breathy release <code>ə</code>.</p>
+</section>
+
+<section id="key" data-screen-label="04 Key">
+<div class="sh"><span class="sn">04</span><h2>Key constraint</h2></div>
+<div class="two">
+<div class="card"><h3>SET IT</h3><ul>
+<li><span class="ui">KEY</span> on, choose a root and a scale in the timeline header.</li>
+<li><span class="ui">LEARN</span>: play the scale, or just the tonic chord, from any MIDI source. The first note is the root; it sets 1.5 s after the last note.</li>
+<li><b>KEY ROOT</b> is bindable in SETUP › BIND to change key mid‑song.</li>
+<li><span class="ui">♪</span> sing only · <span class="ui">♪+◌</span> speech too.</li>
+</ul></div>
+<div class="card"><h3>THE RULE</h3><ul>
+<li>Each note moves to the nearest in‑key note.</li>
+<li>A note exactly between two in‑key notes follows the melody: up if rising from the previous note, otherwise down.</li>
+<li>F0 drags snap to in‑key notes; the lane shows in‑key lines, root brighter.</li>
+<li>Held MIDI notes are never changed.</li>
+</ul></div>
+</div>
+</section>
+
+<section id="editor" data-screen-label="05 Editor">
+<div class="sh"><span class="sn">05</span><h2>Editor gestures</h2></div>
+<div class="scroll"><table class="tbl">
+<tr><th>WHERE</th><th>GESTURE</th><th>RESULT</th></tr>
+<tr><td>Phoneme cell</td><td>Drag right edge</td><td>Length. Its transition stretches with it.</td></tr>
+<tr><td>F0 bar</td><td>Press</td><td>Hear and hold that phoneme; readout shows above the lane.</td></tr>
+<tr><td>F0 bar</td><td>Drag ↕</td><td>Semitone steps you hear as you go. <kbd>⌥</kbd> 0.1 st (off when KEY is on).</td></tr>
+<tr><td>F0 bar</td><td><kbd>⇧</kbd>‑click</td><td>Select a run from the last clicked bar; drag moves all by the same amount.</td></tr>
+<tr><td>F0 bar</td><td><kbd>⌘</kbd>/<kbd>Ctrl</kbd>‑click</td><td>Add or remove single bars from the group.</td></tr>
+<tr><td>Lane</td><td>F0 · BREATH · SHAPE · —</td><td>F0 is editable; BREATH (lung pressure, frication) and SHAPE (tongue, jaw, lip) are read‑only views; — hides the lane.</td></tr>
+<tr><td>F0 bar</td><td>Double‑click</td><td>Reset that bar, or the group.</td></tr>
+<tr><td><span class="ui">↺</span> / <span class="ui">↺ ⟷</span></td><td>Click twice</td><td>Reset all F0 edits / all lengths.</td></tr>
+<tr><td><span class="ui">⟲</span></td><td>Toggle</td><td>Loop. Edits are heard on the running loop; text changes start next pass.</td></tr>
+<tr><td><span class="ui">ASSIGN</span> → pad</td><td>Click</td><td>Store the phrase with lengths, F0, rate and mode. Tagged EDIT.</td></tr>
+</table></div>
+<p class="note">Changing the phrase text clears its edits, so lock the words first. Pad recall restores everything saved with it.</p>
+</section>
+
+<section id="recipes" data-screen-label="06 Recipes">
+<div class="sh"><span class="sn">06</span><h2>Recipes</h2></div>
+<div class="recipes">
+<div><code>Are+you there?</code><span>Connected question: tie removes the reset, ? lifts the end.</span></div>
+<div><code>… and *now* we begin!</code><span>Count‑in, accent on the beat, bright finish.</span></div>
+<div><code>Climb ^^up ^high, then _fall _down.</code><span>Draw a melody in speech without the editor.</span></div>
+<div><code>Hold on~ for me~…</code><span>Sung line with vibrato and a breath before the loop.</span></div>
+<div><code>NO. I said NO!</code><span>Tension and insistence from CAPS alone.</span></div>
+<div><code>/m ɑ l i/~</code><span>A found word from the Phoneme Bank, with vibrato.</span></div>
+</div>
+</section>
+
+<footer><span>Companion to <a href="Workflows.html">Workflows</a> · MIDI Guide.md</span><span>Mr Voice VTM 2.14</span></footer>
+</div></body></html>
