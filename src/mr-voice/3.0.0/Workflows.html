@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mr Voice VTM · Workflows</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#000;--fg:#fff;--g4:#3a3a3a;--g5:#8a8a8a;--g6:#c8c8c8;--rule:#2a2a2a;--mono:'JetBrains Mono',ui-monospace,Menlo,monospace}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--mono);font-size:14px;line-height:1.6;letter-spacing:.01em}
+a{color:var(--fg);text-decoration:underline;text-underline-offset:3px}a:hover{color:var(--g6)}
+.wrap{max-width:880px;margin:0 auto;padding:48px 24px 96px}
+header{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:1px solid var(--fg);padding-bottom:14px}
+.brand{font-weight:700;font-size:18px;letter-spacing:.14em}
+.ver{font-size:10px;letter-spacing:.2em;color:var(--g5)}
+h1{font-size:32px;line-height:1.15;margin:40px 0 10px;font-weight:700;letter-spacing:-.01em;text-wrap:balance}
+.lede{color:var(--g6);max-width:62ch;margin:0;text-wrap:pretty}
+.toc{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin:32px 0 8px}
+.toc a{background:#000;padding:14px 16px;text-decoration:none;display:flex;flex-direction:column;gap:4px}
+.toc a:hover{background:#111;color:var(--fg)}
+.toc b{font-size:10px;letter-spacing:.2em;color:var(--g5);font-weight:600}
+.toc span{font-weight:600}
+section.wf{margin-top:64px;padding-top:20px;border-top:1px solid var(--rule)}
+.wf-h{display:flex;gap:16px;align-items:baseline}
+.wf-n{font-size:10px;letter-spacing:.2em;color:var(--g5);font-weight:600;flex:0 0 auto}
+h2{font-size:22px;margin:0;line-height:1.25;text-wrap:balance}
+.premise{color:var(--g6);margin:10px 0 24px;max-width:64ch;text-wrap:pretty}
+.flow{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:0 0 28px;font-size:10px;letter-spacing:.14em;font-weight:600}
+.flow span{border:1px solid var(--g4);padding:4px 8px;color:var(--g6)}
+.flow i{font-style:normal;color:var(--g5)}
+.cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:32px}
+@media (max-width:720px){.cols{grid-template-columns:minmax(0,1fr)}}
+h3{font-size:10px;letter-spacing:.22em;color:var(--g5);font-weight:600;margin:0 0 10px;text-transform:uppercase}
+.setup{border:1px solid var(--g4);padding:14px 16px;align-self:start}
+.setup dl{margin:0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 12px;font-size:12px}
+.setup dt{color:var(--g5)}
+.setup dd{margin:0}
+ol.steps{margin:0;padding:0;list-style:none;counter-reset:s;display:flex;flex-direction:column;gap:14px}
+ol.steps li{counter-increment:s;position:relative;padding-left:36px;text-wrap:pretty}
+ol.steps li::before{content:counter(s,decimal-leading-zero);position:absolute;left:0;top:3px;font-size:10px;letter-spacing:.1em;color:var(--g5)}
+kbd,.ui{font-family:var(--mono);font-size:11px;letter-spacing:.1em;border:1px solid var(--g4);padding:0 5px;white-space:nowrap;font-weight:600}
+code{font-family:var(--mono);background:#151515;padding:0 4px}
+.tips{margin-top:28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+.tips ul{margin:0;padding-left:16px;display:flex;flex-direction:column;gap:6px;color:var(--g6);font-size:13px}
+.tips .not ul{color:var(--g5)}
+footer{margin-top:72px;padding-top:14px;border-top:1px solid var(--rule);font-size:11px;color:var(--g5);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+</style></head>
+<body><div class="wrap">
+<header><span class="brand">MR VOICE · VTM</span><span class="ver">WORKFLOWS · 3.0</span></header>
+<h1>Ways to play the voice</h1>
+<p class="lede">Three routines that have proved useful or fun. Each one names the panel settings it needs, the moves in order, and where the instrument doesn't reach yet. Setup details live in the MIDI Guide; markup and editor gestures in the <a href="Phrase Guide.html">Phrase Guide</a>.</p>
+<nav class="toc">
+<a href="#find"><b>01</b><span>Find a word with your fingers</span></a>
+<a href="#perform"><b>02</b><span>Perform over a running phrase</span></a>
+<a href="#lyrics"><b>03</b><span>Sketch lyrics over your live sequences</span></a>
+</nav>
+
+<section class="wf" id="find" data-screen-label="01 Find a word">
+<div class="wf-h"><span class="wf-n">01</span><h2>Find a word with your fingers</h2></div>
+<p class="premise">Split the keyboard so the left hand plays phonemes and the right plays pitch. Finger arpeggiated chord shapes across the phoneme zone and let the vowel and consonant order fall where it falls. A curious word or two always turns up. Catch it, refine it, keep it.</p>
+<div class="flow"><span>KEYS SPLIT</span><i>→</i><span>○ REC</span><i>→</i><span>→ PHRASE</span><i>→</i><span>F0 + LENGTHS</span><i>→</i><span>ASSIGN PAD</span></div>
+<div class="cols">
+<div class="setup"><h3>Setup</h3><dl>
+<dt>SETUP › KEYS</dt><dd>Phoneme zone on. Default ZONE LOW C2, SPLIT B3: 13 vowels, the sonorants, /f v θ ð/</dd>
+<dt>Right hand</dt><dd>Keys above SPLIT play pitch</dd>
+<dt>MIDI PADS</dt><dd>Off, or FROM moved clear of the zone</dd>
+<dt>Style</dt><dd>Any. LIGHT MIX is forgiving for search</dd>
+</dl></div>
+<ol class="steps">
+<li>Hold a note in the right hand and roll chord shapes through the phoneme zone with the left. Change the inversion or the shape when the sound gets stuck. Consonants articulate against the held vowel, and releasing one returns to the vowel.</li>
+<li>When something word‑like appears, turn on <span class="ui">○ REC</span> in the Phoneme Bank and play the shape again. Each phoneme key appends a chip. Click a chip to remove a wrong one.</li>
+<li><span class="ui">▶ PLAY</span> checks the sequence. <span class="ui">CLR</span> starts over.</li>
+<li><span class="ui">→ PHRASE</span> sends the recording to the phrase field as <code>/ipa/</code> text, for example <code>/m ɑ l i/</code>. Add markup around it: <code>/m ɑ l i/~</code> for vibrato, <code>^</code> or <code>_</code> for steps, a trailing <code>…</code> for a breath before the loop.</li>
+<li>Turn on <span class="ui">⟲</span> and press <span class="ui">SAY IT</span>. While it loops, drag cell edges to set lengths and drag F0 bars to set the melody. Press a bar to hear it before dragging. <kbd>⇧</kbd>‑click moves a run together, <kbd>⌘</kbd>‑click picks single bars.</li>
+<li><span class="ui">ASSIGN</span>, then click a pad. The pad keeps your F0 and timing edits and is tagged <span class="ui">EDIT</span>. It replays exactly as saved.</li>
+</ol>
+</div>
+<div class="tips">
+<div><h3>Tips</h3><ul>
+<li>Shapes that alternate a vowel and a sonorant (/a l/, /i n/) give the most word‑like results.</li>
+<li>Name the find by typing a gloss after the IPA, then remove it before saving.</li>
+</ul></div>
+<div class="not"><h3>Not yet</h3><ul>
+<li>REC captures order only, not timing or pitch. Lengths and melody are set in the editor.</li>
+<li>Stops and the remaining fricatives sit outside the default 24‑key zone. Widen the zone or add them from the bank.</li>
+</ul></div>
+</div>
+</section>
+
+<section class="wf" id="perform" data-screen-label="02 Perform">
+<div class="wf-h"><span class="wf-n">02</span><h2>Perform over a running phrase</h2></div>
+<p class="premise">An external sequencer starts the phrase looper. You play notes over the running phrase, step through pads, and work the voice with controllers and the phrase editor.</p>
+<div class="flow"><span>EXT START</span><i>→</i><span>⟲ LOOP</span><i>→</i><span>KEYS = PITCH</span><i>→</i><span>PADS</span><i>→</i><span>CCs + EDITOR</span></div>
+<div class="cols">
+<div class="setup"><h3>Setup</h3><dl>
+<dt>SYNC</dt><dd>CLOCK FROM = the sequencer · START / STOP on</dd>
+<dt>Sync loop</dt><dd>RE‑SAY EVERY 1, 2 or 4 bars keeps the phrase on the grid</dd>
+<dt>Tempo</dt><dd>TEMPO → RATE on if the phrase should follow BPM (120 = 1.00×)</dd>
+<dt>Pads</dt><dd>MIDI PADS ON, FROM clear of the playing range</dd>
+<dt>BIND</dt><dd>Mod wheel = vowel sweep. LUNG on CC11 or aftertouch</dd>
+</dl></div>
+<ol class="steps">
+<li>Turn on <span class="ui">⟲</span> so the phrase repeats between bar restarts.</li>
+<li>Start the sequencer. Clock start runs the current phrase, and stop ends it.</li>
+<li>Hold a key to take over the pitch. The voice glides to the note, and on release it glides back to the programmed contour without stopping the phrase. Articulation stays with the phrase.</li>
+<li>Hit pads to change phrase. Each one starts from its first phoneme, with its saved edits.</li>
+<li>Shape the delivery live. LUNG for crescendos, breath and vibrato on knobs, and edits in the F0 lane, which the loop picks up on the next pass. The white line in the F0 lane shows what you actually played.</li>
+</ol>
+</div>
+<div class="tips">
+<div><h3>Tips</h3><ul>
+<li>Leave a rest at the end of each pad phrase. It sets the gap before the next pass.</li>
+<li>Keep the phrase shorter than the RE‑SAY interval so a restart never cuts the last word.</li>
+</ul></div>
+<div class="not"><h3>Not yet</h3><ul>
+<li>Pad hits play immediately. They aren't quantised to the next bar.</li>
+<li>Phrase pads don't light on Push 2 yet.</li>
+<li>Phrase, pads and MIDI don't yet share one voice controller, so a pad hit mid‑glide can jump.</li>
+</ul></div>
+</div>
+</section>
+
+<section class="wf" id="lyrics" data-screen-label="03 Lyrics over live sequences">
+<div class="wf-h"><span class="wf-n">03</span><h2>Sketch lyrics over your live sequences</h2></div>
+<p class="premise">Your hardware or DAW sequencer drives the phrase looper over MIDI, while you rewrite lyrics in the phrase field. The computer's audio goes back into your live mix beside your other instruments. Measure the delay of that return path rather than assuming it.</p>
+<div class="flow"><span>SEQ MIDI → VTM</span><i>→</i><span>⟲ LOOP</span><i>→</i><span>TYPE · LISTEN</span><i>→</i><span>AUDIO → MIX</span><i>→</i><span>SHIFT+L</span></div>
+<div class="cols">
+<div class="setup"><h3>Patch</h3><dl>
+<dt>MIDI in</dt><dd>Sequencer → computer, over USB or a MIDI interface. One cable can carry clock, transport and notes.</dd>
+<dt>SYNC</dt><dd>CLOCK FROM = the sequencer · START / STOP on · TEMPO → RATE on · RE‑SAY EVERY 2 bars</dd>
+<dt>Audio out</dt><dd>Computer → a mixer channel, an audio interface, or a sequencer's USB or line input. Wired only.</dd>
+<dt>Rate</dt><dd>48 kHz in the system sound settings and on the device that receives the audio</dd>
+</dl></div>
+<ol class="steps">
+<li>Patch MIDI from the sequencer to the computer, and audio from the computer into your mix. Set CLOCK FROM to the sequencer and check that <span class="ui">MON</span> shows CLOCK START when you press play.</li>
+<li>Turn on <span class="ui">⟲</span> and start the sequence. The phrase follows the tempo and restarts on the bar.</li>
+<li>Press <kbd>SHIFT+L</kbd> and play a few notes from the sequencer. The panel splits press‑to‑sound into INPUT, SCHED, BUILD and DEVICE. DEVICE is the output path, which is where a slow route shows up. Aim for a total under about 20 ms, and measure again whenever you change the routing.</li>
+<li>Type a line and listen. Text changes start on the next loop pass, so you can rewrite mid‑groove.</li>
+<li>Fit the words to the groove with markup. Use <code>,</code> or <code>;</code> for space, <code>+</code> to slur words together, <code>|</code> to separate them, and <code>*stress*</code> to place the accent on the beat.</li>
+<li>Sing it with <span class="ui">◌</span>, or send a sequencer track's notes to sing the line on its melody. Set the rest of the melody in the F0 lane.</li>
+<li>Mix and effect the voice with the rest of the set. When a line works, <span class="ui">ASSIGN</span> it to a pad and keep its plain text in the list with <span class="ui">SAVE</span>.</li>
+</ol>
+</div>
+<div class="tips">
+<div><h3>Tips</h3><ul>
+<li>If the return path is consistently late, shift the sequencer's MIDI track earlier by the TOTAL from the panel. Most sequencers have a per‑track delay or nudge setting.</li>
+<li>A device that is both the clock source and the audio input can double‑monitor the voice. Turn down its direct monitoring.</li>
+<li>OP‑1 Field and OP‑XY: one USB‑C cable carries MIDI and audio both ways. Choose the device as the computer's output to record the voice to tape or sample it.</li>
+<li>Sketch at rate 1.00× and let TEMPO → RATE do the scaling.</li>
+</ul></div>
+<div class="not"><h3>Not yet</h3><ul>
+<li>The panel measures inside the computer only. The receiving device's own buffering adds time it can't see.</li>
+<li>Changing the text clears that phrase's F0 and timing edits. Lock the words first, then edit.</li>
+<li>MIDI can't carry a key or scale. Use KEY › LEARN and play the scale or tonic chord from the sequencer.</li>
+<li>No phrase export yet. A session's pads live in this browser only.</li>
+</ul></div>
+</div>
+</section>
+
+<footer><span>Monochrome guide · companion to MIDI Guide.md</span><span>Mr Voice VTM 3.0</span></footer>
+</div></body></html>

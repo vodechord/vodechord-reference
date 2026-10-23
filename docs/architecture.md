@@ -68,8 +68,9 @@ vodechord-reference/
 │   ├── *.zip                      ← incoming release zips (gitignored, never deployed)
 │   └── mr-voice/
 │       ├── 2.8.0/                 ← my-name-is-voice.html, MIDI Guide.md, Release Notes 2.2.0-2.8.0.md
-│       └── 2.14.0/                ← Mr Voice VTM2.14.0 (standalone).html, Phrase Guide.html,
-│                                    Workflows.html, MIDI Guide.md, Release Notes *.md
+│       ├── 2.14.0/                ← Mr Voice VTM2.14.0 (standalone).html, Phrase Guide.html,
+│       │                            Workflows.html, MIDI Guide.md, Release Notes *.md
+│       └── 3.0.0/                 ← latest; same set of files, notes in Release Notes 3.0.0.md
 ├── root-site/
 │   └── index.html                 ← bare black page for vodechord.com root (not deployed by CI)
 ├── audio/                         ← placeholder, unused
