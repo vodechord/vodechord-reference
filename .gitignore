@@ -29,3 +29,6 @@ Thumbs.db
 
 # release zips are inputs; unpacked contents are committed under src/<prototype>/<version>/
 src/*.zip
+
+# private working notes (kept out of src/ so they never deploy, ignored so they stay off the public repo)
+/notes/
