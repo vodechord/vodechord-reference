@@ -86,6 +86,21 @@
       text-underline-offset: 2px;
     }
     .notes a:hover { color: #fff; text-decoration-color: #fff; }
+    .clip { margin: 4px 0 20px; }
+    .clip video {
+      display: block;
+      width: 100%;
+      height: auto;
+      background: #000;
+      border: 1px solid #1a1a1a;
+    }
+    .clip figcaption {
+      margin-top: 8px;
+      font-size: 12px;
+      line-height: 20px;
+      letter-spacing: 0.02em;
+      color: #666;
+    }
     @media (max-width: 480px) {
       .tag { display: none; }
     }
@@ -117,6 +132,12 @@
       <li class="has-notes">
         <a href="mr-voice/3.0.0/Mr%20Voice%20VTM3.0.0%20(standalone).html">My Name Is Voice <span class="tag">Updated &middot; v3.0</span> <span class="arrow">&rarr;</span></a>
         <span class="notes"><a href="mr-voice/3.0.0/Release%20Notes%203.0.0.md">Release notes</a> &middot; <a href="mr-voice/3.0.0/Phrase%20Guide.html">Phrase guide</a> &middot; <a href="mr-voice/3.0.0/Workflows.html">Workflows</a> &middot; <a href="mr-voice/3.0.0/MIDI%20Guide.md">MIDI guide</a> &middot; Previous: <a href="mr-voice/2.14.0/Mr%20Voice%20VTM2.14.0%20(standalone).html">v2.14</a>, <a href="mr-voice/2.8.0/my-name-is-voice.html">v2.8</a></span>
+        <figure class="clip">
+          <video controls preload="none" playsinline poster="media/vtm-rough-cut-poster.jpg" width="1280" height="720">
+            <source src="media/vtm-rough-cut.mp4" type="video/mp4">
+          </video>
+          <figcaption>Rough cut &middot; how I&rsquo;m using Mr Voice (VTM 2.2&ndash;2.8) &middot; 5:48</figcaption>
+        </figure>
       </li>
       <li><a href="waveguide-lab.html">Waveguide Lab <span class="arrow">&rarr;</span></a></li>
     </ul>

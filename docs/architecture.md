@@ -31,6 +31,10 @@ Rules that follow from this:
 
 Each release folder holds the docs that came in its zip: release notes and the MIDI guide as Markdown (deployed unrendered), plus HTML guides such as `Phrase Guide.html` and `Workflows.html`. Filenames are kept exactly as exported, because the guides link to each other by filename. A release folder is frozen once committed, and a fix becomes a new version.
 
+### Media: compressed before commit
+
+`src/media/` holds video shown on the index, such as `vtm-rough-cut.mp4`: H.264/AAC at 720p, played with a plain `<video>` element that loads nothing until play. Every committed version stays in git history, so compress a video before committing it (two-pass x264, around 25 MB for five minutes, audio at 128 kbps) and keep the original outside `src/`, e.g. in the gitignored `notes/`. Only post audio and video you own.
+
 ### Audio: synthesized in the browser
 
 All sound is generated at play time with the Web Audio API; the DSP runs in `AudioWorkletNode`s inside the bundles. The `AudioContext` starts only on a user gesture. Mr Voice also uses the Web MIDI API (Chrome) and keeps user settings, phrase library and controller maps in `localStorage`.
@@ -66,6 +70,7 @@ vodechord-reference/
 │   ├── my-name-is-voice.html      ← hand-written redirect to the latest Mr Voice release
 │   ├── waveguide-lab.html         ← Claude Design export
 │   ├── *.zip                      ← incoming release zips (gitignored, never deployed)
+│   ├── media/                     ← site video and its poster frame, linked from the index
 │   └── mr-voice/
 │       ├── 2.8.0/                 ← my-name-is-voice.html, MIDI Guide.md, Release Notes 2.2.0-2.8.0.md
 │       ├── 2.14.0/                ← Mr Voice VTM2.14.0 (standalone).html, Phrase Guide.html,
